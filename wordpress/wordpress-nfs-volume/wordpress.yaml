@@ -72,7 +72,8 @@ metadata:
     app: wordpress
 spec:
   type: LoadBalancer
-  loadBalancerIP: 35.229.243.229
+  # Reserve a static external IP address
+  # loadBalancerIP: 35.229.243.229
   ports:
     - port: 80
       targetPort: 80
