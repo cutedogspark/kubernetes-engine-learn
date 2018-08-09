@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mysql-pv
+  annotations: 
+    backup.kubernetes.io/deltas: PT3H P1D P2D
+spec:
+  capacity:
+    storage: 88Gi
+  accessModes:
+    - ReadWriteOnce
+  gcePersistentDisk:
+    pdName: mystyle-mysql

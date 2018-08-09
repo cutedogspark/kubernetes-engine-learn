@@ -2,7 +2,9 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: wordpress-nfs-html
+  name: wordpress-pv
+  annotations: 
+    backup.kubernetes.io/deltas: PT3M P1D P3D
 spec:
   capacity:
     storage: 50Gi
@@ -16,7 +18,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: wordpress-nfs-html
+  name: wordpress-pv-claim
   labels:
     app: wordpress
 spec:
@@ -62,7 +64,7 @@ spec:
       volumes:
       - name: nfs
         persistentVolumeClaim:
-          claimName: wordpress-nfs-html
+          claimName: wordpress-pv-claim
 ---
 apiVersion: v1
 kind: Service
